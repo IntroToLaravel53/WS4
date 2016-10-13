@@ -1,5 +1,6 @@
 <?php
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,6 +12,8 @@
 |
 */
 
+use Symfony\Component\HttpFoundation\Response;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -18,3 +21,18 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
+/* option 1
+Route::get('/brands', function () {
+    $brands = \App\Brand::all();
+     return view('brands.show', array("brands" => $brands));
+
+ });
+*/
+
+
+// option 2
+Route::get('/brands', 'BrandController@index');
+
+
+//Route::resource('brands', 'BrandController');
