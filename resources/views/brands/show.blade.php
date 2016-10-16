@@ -2,19 +2,32 @@
 
 @section('content')
     <div class="container">
+        <div id="app"></div>
 
 
-        @foreach ($brands as $brand)
+        <div class="panel panel-info">
+            <div class="panel-heading clearfix">
+                <a href="{{ route('brands.show', $brand->id) }}">{{ $brand->name }}</a>
+            </div>
+            <div class="panel-body  ">
+                {{ $brand->desc}}
+            </div>
+            <div class="panel-footer clearfix">
+                <div class="pull-right">
+                    {!! Form::open(array('class' => '',
+                           'method' => 'DELETE',
+                        'route' => array('brands.destroy', $brand->id))) !!}
 
-            <div class="panel panel-success">
-                <div class="panel-heading">  {{ $brand->name }}    id: {{ $brand->id }}</div>
-                <div class="panel-body">
-                    {{ $brand->desc}}
+                    <a href="{{$brand->id}}/edit" class="btn btn-primary"><span
+                                class="glyphicon glyphicon-remove-circle"></span>Edit</a>
+
+                    {{Form::button('<span class="glyphicon glyphicon-remove-circle"></span>Delete', array('type' => 'submit', 'class' => 'btn btn-danger'))}}
+
+
+                    {!! Form::close() !!}
+
                 </div>
             </div>
-        @endforeach
-
-
-            {{ $brands->links() }}
+        </div>
     </div>
 @endsection

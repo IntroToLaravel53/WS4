@@ -1,6 +1,6 @@
 const elixir = require('laravel-elixir');
 
-require('laravel-elixir-vue-2');
+require('laravel-elixir-vue');
 
 /*
  |--------------------------------------------------------------------------
@@ -13,7 +13,12 @@ require('laravel-elixir-vue-2');
  |
  */
 
+
+require('laravel-elixir-browserify-official');
+require('laravel-elixir-vueify');
+
 elixir(mix => {
     mix.sass('app.scss')
-       .webpack('app.js');
+        .browserify('app.js');
+    //   .copy('node_modules/bootstrap-sass/assets/fonts', 'public/css/fonts')
 });

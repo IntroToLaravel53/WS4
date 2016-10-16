@@ -32,7 +32,7 @@ Route::get('/brands', function () {
 
 
 // option 2
-Route::get('/brands', 'BrandController@index');
+//Route::get('/brands', 'BrandController@index');
 
 
-//Route::resource('brands', 'BrandController');
+Route::resource('brands', 'BrandController');
